@@ -80,7 +80,7 @@ func quadToCoord (key string) Coord {
 	}
 	keyInt, _ := strconv.Atoi(key)
 	for i := len(key); i > 0; i--{
-		mask := 1 << (i - 1)
+		mask := 1 << uint(i - 1)
 		q := digitAt(keyInt,i)
 
 		if q == 1 {
