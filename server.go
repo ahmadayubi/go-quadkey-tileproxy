@@ -47,6 +47,11 @@ type Coord struct {
 }
 
 func getTile(w http.ResponseWriter, r *http.Request){
+	if chi.URLParam(r, "coord") == ""{
+		http.Error(w, "No Coord", http.StatusInternalServerError)
+		return
+	}
+
 	c := quadToCoord(chi.URLParam(r, "coord"))
 
 	url := "https://api.mapbox.com/v4/mapbox.satellite/" + strconv.Itoa(c.z) + "/" + strconv.Itoa(c.x) + "/" +strconv.Itoa(c.y)+"@2x.png256?access_token="+os.Getenv("MAPBOX_TOKEN")
