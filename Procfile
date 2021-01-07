@@ -1,1 +1,1 @@
-web: server
+web: go-quadkey-tileproxy
