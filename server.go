@@ -25,7 +25,7 @@ func main() {
 	if err := chi.Walk(router, walkF); err != nil {
 		log.Fatalf("Logging Error: %s",err.Error())
 	}
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
 }
 
 func CreateRoutes() *chi.Mux{
